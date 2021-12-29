@@ -12,7 +12,7 @@ OS Platform: Windows 10
 Python Minimum Version: Python 3
 =====================================================
 
-The source is for ** PYTHON 3+ ONLY!!! PYTHON 2 AND BELOW WILL NOT WORK!!! **
+The source is for PYTHON 3+ ONLY!!! PYTHON 2 AND BELOW WILL NOT WORK!!!
 ======================================
 **To compile to executable(s):**
 Requirements:
