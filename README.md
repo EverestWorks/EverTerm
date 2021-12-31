@@ -7,7 +7,7 @@ Current Stats:
 
 Release Version: Pre_Alpha 0.0.1.299
 
-Planned Alpha 1.0.0.0 Release: May-June 30 2022(maybe earlier, depends)
+Planned: Alpha 1.9.0.422991 Release: May-June 30 2022(maybe earlier, depends)
 
 OS Platform: Windows 10
 
