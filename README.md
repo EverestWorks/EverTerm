@@ -21,9 +21,9 @@ The source is for PYTHON 3+ ONLY!!! PYTHON 2 AND BELOW WILL NOT WORK!!!
 
 To compile to executable(s):
 Requirements:
-Windows 10 with Python in the system PATH
-Brain
-Hands
+Windows 10 with Python in the system PATH, 
+Brain, 
+Hands, 
 CMD.exe
 
 ======================================
