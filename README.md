@@ -32,7 +32,7 @@ If you do not have the pyinstaller module, install with the command:
 `pip install pyinstaller`
 
 Once pyinstaller is ready, download the source with either
-`gh repo clone MultiOSDev/Everest-Tools` or `git clone https://github.com/MultiOSDev/Everest-Tools.git` (Alert me if it doesn't work)!
+`gh repo clone EverestWorks/Everest-Tools` or `git clone https://github.com/EverestWorks/Everest-Tools.git` (Alert me if it doesn't work)!
 Then change your directory to the source
 Use the pyinstaller command as: 
 `pyinstaller -F -i [icon.ico] [file.py]`
