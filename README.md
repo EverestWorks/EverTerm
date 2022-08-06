@@ -30,7 +30,6 @@ If you do not have the pyinstaller module, install with the command:
 `pip install pyinstaller`
 
 Once pyinstaller is ready, download the source with either
-<<<<<<< HEAD
 `gh repo clone EverestWorks/Everest` (Alert me if it doesn't work)!
 =======
 `gh repo clone EverestWorks/Everest-Tools` or `git clone https://github.com/EverestWorks/Everest-Tools.git` (Alert me if it doesn't work)!
