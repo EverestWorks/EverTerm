@@ -33,7 +33,6 @@ Once pyinstaller is ready, download the source with either
 `gh repo clone EverestWorks/Everest` (Alert me if it doesn't work)!
 =======
 `gh repo clone EverestWorks/Everest-Tools` or `git clone https://github.com/EverestWorks/Everest-Tools.git` (Alert me if it doesn't work)!
->>>>>>> 37e7ac5597a283323aaaabe89e31cc1c172e1d31
 Then change your directory to the source
 Use the pyinstaller command as: 
 `pyinstaller -F -i [icon.ico] [file.py]`
