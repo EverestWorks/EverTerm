@@ -1,5 +1,5 @@
-# Everest-Tools
-A toolset for Windows written in Python! 
+# EverTerm
+A terminal for Windows written in Python! 
 
 Current Stats:
 
