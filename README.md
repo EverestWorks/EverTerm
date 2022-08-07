@@ -49,6 +49,7 @@ For pyinstaller:
 Replace [icon.ico] with the icon that matches the file name of [file.py]
 Replace [file.py] with the python file you wish to compile
 
-To compile all, run the compileall.bat located in the compile directory, or run the batch file of the python file you want to compile
+To compile all, run the compileall.bat located in the compile directory, or run the batch file of the python file you want to compile.
+
 This is for Windows only, sorry linux I'll make one for you soon
 
