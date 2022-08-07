@@ -18,9 +18,8 @@ The source is for **PYTHON 3+ ONLY** PYTHON 2 is not supported!
 ======================================
 
 
-To compile to executable(s):
-Requirements:
-Windows 10 with Python in the system PATH, 
+To compile, you need:
+Windows 10 with Python in the PATH, 
 Brain, 
 Hands, 
 CMD.exe
@@ -51,5 +50,5 @@ Replace [icon.ico] with the icon that matches the file name of [file.py]
 Replace [file.py] with the python file you wish to compile
 
 To compile all, run the compileall.bat located in the compile directory, or run the batch file of the python file you want to compile
-PYINSTALLER MUST BE INSTALLED
+This is for Windows only, sorry linux I'll make one for you soon
 
