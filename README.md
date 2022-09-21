@@ -7,7 +7,7 @@ Current Stats:
 
 =====================================================
 
-Release Version: Version 1.0
+Release Version: Version 1.0.0122
 
 OS Platform: Windows 10
 
