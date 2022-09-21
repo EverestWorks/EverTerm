@@ -1,9 +1,9 @@
 # EverTerm
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
 
-A terminal for Windows written in Python! 
+The terminal for beginners to use, and modify themselves.
 
-Current Stats:
+EverTerm Statistics:
 
 =====================================================
 
@@ -40,7 +40,7 @@ Once pyinstaller is ready, download the source with either
 ======================================
 
 
-`gh repo clone EverestWorks/Everest-Tools` or `git clone https://github.com/EverestWorks/Everest-Tools.git` (Alert me if it doesn't work)!
+`gh repo clone EverestWorks/Everest-Tools` (Alert me if it doesn't work)!
 Then change your directory to the source
 Use the pyinstaller command as: 
 `pyinstaller -F -i [icon.ico] [file.py]` in the src directory
@@ -51,7 +51,6 @@ For pyinstaller:
 Replace [icon.ico] with the icon that matches the file name of [file.py]
 Replace [file.py] with the python file you wish to compile
 
-To compile all, run the compileall.bat located in the compile directory, or run the batch file of the python file you want to compile.
 
-This is for Windows only, sorry linux I'll make one for you soon
+UPDATE: I'M DEVELOPING A VERSION FOR LINUX, PLEASE SIT TIGHT!
 
