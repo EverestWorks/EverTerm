@@ -54,5 +54,5 @@ Replace [icon.ico] with the icon that matches the file name of [file.py]
 Replace [file.py] with the python file you wish to compile
 
 
-UPDATE: I'M DEVELOPING A VERSION FOR LINUX, PLEASE SIT TIGHT!
+LINNUX USERS! I'M DEVELOPING A VERSION FOR LINUX, PLEASE SIT TIGHT, IT'LL TAKE A BIT!
 
