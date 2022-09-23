@@ -1,4 +1,4 @@
-#Timeline
+# Timeline
 
 Phase 1 (Current phase):
 This is the eary phase of development, pre-release wasn't to be published to public due to some issues in the software. This phase is the official release's earliest stage of development, and is still at its most basic form. Will have bugs, don't expect stability. All releases will be marked as pre-release, up untill version 1.3.223
