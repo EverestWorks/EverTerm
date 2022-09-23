@@ -14,3 +14,5 @@ The last part of development, features will devinetly be expanded. Development w
 
 **Release versioning will change to:
 xx.yy.zzz.PATCHNUM CODENAME**
+
+Starting at Phase 2 development!
