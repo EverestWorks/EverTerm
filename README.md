@@ -1,9 +1,14 @@
 # EverTerm
-A terminal for Windows written in Python! 
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
 
-Current Stats:
+[![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
+
+The terminal for beginners to use, and modify themselves.
+
+EverTerm Statistics:
 
 =====================================================
+
 
 Release Version: Version 1.0.022
 
@@ -38,12 +43,11 @@ Once pyinstaller is ready, download the source with either
 ======================================
 
 
-`gh repo clone EverestWorks/Everest-Tools` or `git clone https://github.com/EverestWorks/Everest-Tools.git` (Alert me if it doesn't work)!
+`gh repo clone EverestWorks/Everest-Tools` (Alert me if it doesn't work)!
 Then change your directory to the source
 Use the pyinstaller command as: 
 `pyinstaller -i icon.ico evtm.py` in the src directory
 Use py2exe as:
 'python setup.py py2exe' in the src directory
 
-Linux is getting a binary soon, please hang tight guys!!
-
+Linux is getting a binary soon, please hang tight guys!
