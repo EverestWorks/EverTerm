@@ -12,5 +12,5 @@ This is the final phase in early developments, and is the most stable of early b
 PermDev: 
 The last part of development, features will devinetly be expanded. Development will fall into a regular cycle, with 2 official short term releases with help on the wikis and bug patches. Every 2 years, there will be a long term release, with 5 years worth of technical support and bug patches. 
 
-Release versioning will change to:
-xx.yy.zzz.PATCHNUM CODENAME
+**Release versioning will change to:
+xx.yy.zzz.PATCHNUM CODENAME**
