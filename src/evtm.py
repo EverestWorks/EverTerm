@@ -12,15 +12,21 @@ if platform.system()=="Windows": # OS Checking
     print("OS check sucsessful, running EverTerm")
     subprocess.Popen("cls", shell=True).communicate() 
     time.sleep(0.5)
+else: 
+    print("WARN: Linux and Mac support is in beta")
+    print("Please use at your own risk")
+    print("\033c", end="")
 
 print("EverTerm Version 1.0.0122 Phase 1\n")
 print("Build Date: 22/9/2022 20:13\n")
 
-while True: # Basically the main thing
+while True: # the main thing
     cmd = input("$: ")
-    if cmd == "clear": #clease screen
+    if cmd == "clear": #clears screen
         if platform.system()=="Windows":
-            subprocess.Popen("cls", shell=True).communicate() 
+            subprocess.Popen("cls", shell=True).communicate()
+        else: #Linux and Mac clear variant
+            print("\033c", end="") 
             
         print("EverTerm Version 1.0.0122 Phase 1\n")
         print("Build Date: 22/9/2022 20:13\n")
@@ -28,7 +34,8 @@ while True: # Basically the main thing
     if cmd == "help":
         print("EverTerm is still in early stages of development.\nSee dev.md for the phases of development")
         print("help: runs this command\nping: pings a website on the internet\nphasecopy:prints a phrase you type to it\nfilecopy: self explanatory\ndate: lists a date\n filelist:lists files, what did you expect?\nclear:clears the screen\nexit: exits terminal\n") #sorry about this, im just a little lazy, i will handle this later
-        print("be sure to use // in the filecopy command for directories, thanks")
+        print("be sure to use // in the filecopy command for directories,\n WINDOWS ONLY")
+        print("\nLinux users! please use your normal path! thanks!")
 
     if cmd == 'ping': #pings a website of your choosing
         host = input("Enter Website To Ping: ")
