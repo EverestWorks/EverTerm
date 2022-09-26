@@ -10,9 +10,9 @@ EverTerm Statistics:
 =====================================================
 
 
-Release Version: Version 1.0.001
+Release Version: Version 1.0.022
 
-OS Platform: Linux
+OS Platform: Linux or windows 10
 
 Python Minimum Version: Python 3
 
@@ -27,7 +27,7 @@ To compile, you need:
 Linux with Python in the PATH, 
 Brain, 
 Hands, 
-bash
+bash or CMD.exe
 
 
 ======================================
