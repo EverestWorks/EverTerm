@@ -10,9 +10,9 @@ EverTerm Statistics:
 =====================================================
 
 
-Release Version: Version 1.0.022
+Release Version: Version 1.0.001
 
-OS Platform: Windows 10
+OS Platform: Linux
 
 Python Minimum Version: Python 3
 
@@ -24,10 +24,10 @@ The source is for **PYTHON 3+ ONLY** PYTHON 2 is not supported!
 
 
 To compile, you need:
-Windows 10 with Python in the PATH, 
+Linux with Python in the PATH, 
 Brain, 
 Hands, 
-CMD.exe
+bash
 
 
 ======================================
@@ -50,4 +50,4 @@ Use the pyinstaller command as:
 Use py2exe as:
 'python setup.py py2exe' in the src directory
 
-Linux is getting a binary soon, please hang tight guys!
+Linux binaries are oing to be released, im almost done!!
