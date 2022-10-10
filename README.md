@@ -24,9 +24,10 @@ The source is for **PYTHON 3+ ONLY** PYTHON 2 is not supported!
 
 ======================================
 
+**Linus instructions are in the src/Linux directory!**
 
 To compile, you need:
-Linux with Python in the PATH, 
+Windows with Python in the PATH, 
 Brain, 
 Hands, 
 CMD.exe
@@ -52,4 +53,4 @@ Use the pyinstaller command as:
 Use py2exe as:
 'python setup.py py2exe' in the src directory
 
-Linux binaries are oing to be released, im almost done!!
+Linux bnaries released this friday, im finalizing changes
