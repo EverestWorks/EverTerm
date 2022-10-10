@@ -5,6 +5,8 @@
 
 The terminal for beginners to use, and modify themselves.
 
+**NEW!!** a release schedule has been implemented, see release.txt in the source directory
+
 EverTerm Statistics:
 
 =====================================================
