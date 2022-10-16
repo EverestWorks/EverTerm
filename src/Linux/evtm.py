@@ -7,6 +7,7 @@ import subprocess
 import platform
 import socket
 import shutil
+mport subprocess
 
 if platform.system()=="Windows": # OS Checking
     print("OS check sucsessful, running EverTerm")
@@ -71,6 +72,10 @@ while True: # the main thing
         e.write(text)
         e.write('\n')
         exit()
+    if cmd == "startapp": # should start an app
+        print("WARN: windows users use a \\ insteado of regular slash!\n")
+        app = input("Enter the path of the app:\n")
+        subprocess.Popen(app)
 
     if cmd == "credits": #credits, what did you expect?
         print("Icon designed in Pixelorama, go to https://github.com/Orama-Interactive/Pixelorama/ for info")

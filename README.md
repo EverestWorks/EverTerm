@@ -53,4 +53,6 @@ Use the pyinstaller command as:
 Use py2exe as:
 'python setup.py py2exe' in the src directory
 
-Linux bnaries released this sunday, im finalizing changes, sit tight guys
+
+UPDATE RELEASE ON 31/10/22, INCLUDES LINUX BINARIES
+
