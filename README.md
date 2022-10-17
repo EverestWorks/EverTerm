@@ -20,11 +20,11 @@ Python Minimum Version: Python 3
 
 =====================================================
 
-The source is for **PYTHON 3+ ONLY** PYTHON 2 is not supported!
+The source is for **PYTHON 3+ ONLY**
 
 ======================================
 
-**Linus instructions are in the src/Linux directory!**
+**Linux instructions are in the src/Linux directory!**
 
 To compile, you need:
 Windows with Python in the PATH, 
@@ -54,5 +54,5 @@ Use py2exe as:
 'python setup.py py2exe' in the src directory
 
 
-UPDATE RELEASE ON 31/10/22, INCLUDES LINUX BINARIES
+HALLOWEEN UPDATE RELEASE ON 31/10/22, INCLUDES LONG AWAITED LINUX BINARIES
 
