@@ -24,7 +24,7 @@ The source is for **PYTHON 3+ ONLY**
 
 ======================================
 
-**Linux instructions are in the src/Linux directory!**
+**Linux instructions will be in the src/Linux directory! I'm prepping them.**
 
 To compile, you need:
 Windows with Python in the PATH, 
