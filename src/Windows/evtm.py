@@ -7,7 +7,6 @@ import subprocess
 import platform
 import socket
 import shutil
-mport subprocess
 
 if platform.system()=="Windows": # OS Checking
     print("OS check sucsessful, running EverTerm")
@@ -37,6 +36,11 @@ while True: # the main thing
         print("help: runs this command\nping: pings a website on the internet\nphasecopy:prints a phrase you type to it\nfilecopy: self explanatory\ndate: lists a date\n filelist:lists files, what did you expect?\nclear:clears the screen\nexit: exits terminal\n") #sorry about this, im just a little lazy, i will handle this later
         print("be sure to use // in the filecopy command for directories,\n WINDOWS ONLY")
         print("\nLinux users! please use your normal path! thanks!")
+        
+    if cmd == "modlaunch":
+        pass
+    if cmd == "modlaunch":
+        pass
 
     if cmd == 'ping': #pings a website of your choosing
         host = input("Enter Website To Ping: ")
