@@ -3,7 +3,7 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
 
-The terminal for beginners to use, and modify themselves.
+The terminal for beginners to use, and mod!
 
 **NEW!!** a release schedule has been implemented, see release.txt in the source directory
 
