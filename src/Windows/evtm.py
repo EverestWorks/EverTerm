@@ -79,7 +79,7 @@ while True: # the main thing
         exit()
     if cmd == "startapp": # should start an app
         print("WARN: windows users use a \\ instead of regular slash!\n")
-        app = input("Enter the path of the app:\n")
+        app = input("Enter the FULL path of the app:\n")
         subprocess.Popen(app)
 
     if cmd == "credits": #credits, what did you expect?
