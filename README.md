@@ -3,7 +3,7 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
 
-The terminal for beginners to use, and modify themselves.
+The terminal for beginners to use, and mod!
 
 **NEW!!** a release schedule has been implemented, see release.txt in the source directory
 
@@ -24,7 +24,7 @@ The source is for **PYTHON 3+ ONLY**
 
 ======================================
 
-**Linux instructions are in the src/Linux directory!**
+**Linux instructions will be in the src/Linux directory! I'm prepping them.**
 
 To compile, you need:
 Windows with Python in the PATH, 
