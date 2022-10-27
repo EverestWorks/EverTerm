@@ -7,6 +7,7 @@ import subprocess
 import platform
 import socket
 import shutil
+from datetime import datetime
 
 if platform.system()=="Windows": # OS Checking
     print("OS check sucsessful, running EverTerm")
@@ -17,7 +18,7 @@ else:
     print("Please use at your own risk")
     print("\033c", end="")
 
-print("EverTerm Version 1.0.0122 Phase 1\n")
+print("EverTerm Version 1.0.022 Phase 1\n")
 print("Build Date: 22/9/2022 20:13\n")
 
 while True: # the main thing
@@ -28,7 +29,7 @@ while True: # the main thing
         else: #Linux and Mac clear variant
             print("\033c", end="") 
             
-        print("EverTerm Version 1.0.0122 Phase 1\n")
+        print("EverTerm Version 1.0.022 Phase 1\n")
         print("Build Date: 22/9/2022 20:13\n")
 
     if cmd == "help":
@@ -70,14 +71,14 @@ while True: # the main thing
         print(dir_list2)
 
     if cmd == "exit":#exits
-        print("logout at " + time.strftime("%m/%d/%Y"))
-        text = "logout at " + time.strftime("%m/%d/%Y")
+        text = str(current_datetime)
+        print("logout at " + text)
         e = open('log.txt', 'w')
         e.write(text)
         e.write('\n')
         exit()
     if cmd == "startapp": # should start an app
-        print("WARN: windows users use a \\ insteado of regular slash!\n")
+        print("WARN: windows users use a \\ instead of regular slash!\n")
         app = input("Enter the path of the app:\n")
         subprocess.Popen(app)
 
