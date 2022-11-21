@@ -1,3 +1,3 @@
 from distutils.core import setup
 import py2exe
-setup(console=['afdr.py'])
+setup(console=['evtm.py'])

@@ -1,5 +1,5 @@
 Phase 1 release schedule:
-2 releases very month
+at least 1 release every month
 
 Phase 2 release schedule:
 1 stable release yearly
@@ -9,6 +9,6 @@ Phase 3 Release schedule:
 1 LTS release with support for 3 years
 2 short term releases with 1 year support
 
-Official builds release schedule:
+Regular builds release schedule:
 1 LTS release with support for 3 years
-3 short term releases with 1 year support when a releae is agreed upon
+3 short term releases with 1 year support when a release is agreed upon

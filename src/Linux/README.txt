@@ -1,12 +1,12 @@
-This is the linux code for EverTerm, compilation instructins will be in an sh file
+This is the linux side of the code, which should involve more linux type commends
 
 Prerequistes:
 
-python
-pip
-a debian based distro or debian
-pyinstaller
-hands
-mouse
+python (depends if you have it, so sudo may be needed)
+pip (depends if you have it, so sudo may be needed)
+an arch based distro or debian
+pyinstaller (install with pip, no sudo needed)
+hands (gonna need sudo)
+keyboard (just get one, no sudo needed)
 
-if any of these isn't present, run autoinstall.sh
+if any of these isn't present, please install it

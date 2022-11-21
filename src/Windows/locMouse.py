@@ -6,7 +6,7 @@ print("Press CTRL-C to exit")
 # Fetch the mouse coordinates
 try:
     while True:
-        # Find and print the coordinates
+        # Finds and print the coordinates along with RGB info
         x, y = pyautogui.position()
         positionStr = 'X: ' + str(x).rjust(4) + '    Y: ' + str(y).rjust(4)
         pixelColor = pyautogui.screenshot().getpixel((x, y))
