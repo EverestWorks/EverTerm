@@ -1,5 +1,4 @@
 from copy import copy
-import sys
 import os
 import time
 import subprocess
@@ -9,15 +8,16 @@ import shutil
 from datetime import datetime
 import keyboard
 from art import *
+from treegen import draw_christmas_tree
 
 
 if __name__ == "__main__":     #  Added this little thing just for the modding, this wont work if this python file is imported into your mod, see modding documentation
     if platform.system()=="Windows": # OS Checking
-        print("OS check sucsessful, running EverTerm")
-        subprocess.Popen("cls", shell=True).communicate() 
+        print("OS check sucsessful, running EverTerm") 
+        os.system('cls')
         time.sleep(0.5)
     else: 
-        print("WARN: Linux and Mac support is in beta")
+        print("WARN: Linux support is in beta")
         print("Please use at your own risk")
         time.sleep(2)
         print("\033c", end="")
@@ -28,6 +28,11 @@ if __name__ == "__main__":     #  Added this little thing just for the modding, 
 
     while True: # the main thing
         cmd = input("$: ")
+
+        if cmd == "hohoho":
+            print("Merry Christmas!")
+            draw_christmas_tree(3)
+
 
         if cmd == "ssh-cisco": # ssh for cisco routers and switches (in the making)
             pass
@@ -71,28 +76,24 @@ if __name__ == "__main__":     #  Added this little thing just for the modding, 
             print(dir_list2)
 
         if cmd == "exit":# exits terminal (works)
-            var = "This is just a placeholder, just wait"
-            text = str(var)
-            print("logout at " + text)
-            e = open('log.txt', 'w')
-            e.write(text)
-            e.write('\n')
+            print("logout")
             exit()
 
         if cmd == "startapp": # starts an app (works)
-            print("WARN: windows users use a / instead of regular slash!\n ")
+            print("WARN: You're seeing this because you run Windows\nuse a / instead of regular slash!\n ")
             app = input("Enter the FULL path of the app:\n")
-            subprocess.Popen(app)
+            subprocess.Popen(app) #the aftermath of the app start is a bit buggy
 
         if cmd == "credits": # shows the stuff used and things (works)
             print("Icon designed in Pixelorama, go to https://github.com/Orama-Interactive/Pixelorama/ for info")
             print("Inspired by https://github.com/Cyber-Coding-Scripts/Terminal")
+            print("Tree generated with https://github.com/chumicat/Ascii-Christmas-Tree")
             print("This product is a product of EverestWorks, please do not use for malicious intent.")
             
 
-            print("==============TERMINAL INFO=====================")
-            print("EverTerm Version 1.1.233 Phase 1\n")
-            print("Build Date: 24/11/2022 20:13\n")
+            print("==============TERMINAL INFO=====================") #added this section
+            print("EverTerm Version 1.1.hohoho Phase 2\n") 
+            print("Build Date: 23/12/2022 19:14\n")
 
     
     
