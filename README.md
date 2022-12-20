@@ -53,5 +53,5 @@ Use the pyinstaller command as:
 Use py2exe as:
 'python setup.py py2exe' in the src directory
 
-Christmas update signals the near end of Phase 1 development
+Christmas update signals that we have entered Phase 2
 
