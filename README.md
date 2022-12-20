@@ -55,3 +55,4 @@ Use py2exe as:
 
 Christmas update signals that we have entered Phase 2
 
+Windows code is slowly moving to Visual Studio because its powerful
