@@ -53,6 +53,5 @@ Use the pyinstaller command as:
 Use py2exe as:
 'python setup.py py2exe' in the src directory
 
-Christmas update signals that we have entered Phase 2
-
+New Year's Update next!
 Windows code is slowly moving to Visual Studio because its powerful
