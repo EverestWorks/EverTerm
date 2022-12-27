@@ -40,7 +40,7 @@ If you do not have the pyinstaller or py2exe mmodule(s), install with the comman
 `pip install pyinstaller` or `pip install py2exe`
 
 Once pyinstaller is ready, download the source with either
-`gh repo clone EverestWorks/Everest` (Alert me if it doesn't work)!
+`gh repo clone EverestWorks/EverTerm` (Alert me if it doesn't work)!
 
 
 ======================================
