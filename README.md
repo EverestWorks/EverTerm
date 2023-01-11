@@ -55,3 +55,6 @@ Use py2exe as:
 
 New Year's Update next!
 Windows code is slowly moving to Visual Studio because its powerful
+
+
+NOTE: CODESPACES WORKS, USE CODESPACES IF YOU DONT WANNA INSTALL ANYTHING
