@@ -53,8 +53,6 @@ Use the pyinstaller command as:
 Use py2exe as:
 'python setup.py py2exe' in the src directory
 
-New Year's Update next!
-Windows code is slowly moving to Visual Studio because its powerful
-
+v1.1.100 PATCH 2 REPEASE 1
 
 NOTE: CODESPACES WORKS, USE CODESPACES IF YOU DONT WANNA INSTALL ANYTHING
