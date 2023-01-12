@@ -24,7 +24,7 @@ The source is for **PYTHON 3+ ONLY**
 
 ======================================
 
-**Linux instructions will be in the src/Linux directory! I'm prepping them.**
+**LINUX .sh FILES ARE ALMOST HERE.**
 
 To compile, you need:
 Windows with Python in the PATH, 
@@ -53,6 +53,7 @@ Use the pyinstaller command as:
 Use py2exe as:
 'python setup.py py2exe' in the src directory
 
-v1.1.100 PATCH 2 REPEASE 1
+
+v1.1.100 PATCH 2 REPEASE 1 comes March 15
 
 NOTE: CODESPACES WORKS, USE CODESPACES IF YOU DONT WANNA INSTALL ANYTHING
