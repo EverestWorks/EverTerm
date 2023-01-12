@@ -4,7 +4,7 @@ Prerequistes:
 
 python (depends if you have it, so sudo may be needed)
 pip (depends if you have it, so sudo may be needed)
-an arch based distro or debian
+a linux distro (use that usb in your closet)
 pyinstaller (install with pip, no sudo needed)
 hands (gonna need sudo)
 keyboard (just get one, no sudo needed)
