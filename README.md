@@ -54,6 +54,6 @@ Use py2exe as:
 'python setup.py py2exe' in the src directory
 
 
-v1.1.100 PATCH 2 REPEASE 1 comes March 15
+v1.1.100 PATCH 1 REPEASE 2 comes March 15
 
-NOTE: CODESPACES WORKS, USE CODESPACES IF YOU DONT WANNA INSTALL ANYTHING
+NOTE: Ccodespaces works, use it if your lazy and dont feel like installing VSCode or VS
