@@ -1,17 +1,15 @@
-from copy import copy # the imports
 import os
 import time
 import subprocess
 import platform
-import socket
 import shutil
-from datetime import datetime
 from cmd import Cmd
 
-def winClear(): #this might seem useless but this is just  for upcoming mod support, this is going to be transferred as a module soon
+
+def winclear(): #this might seem useless but this is just  for upcoming mod support, this is going to be transferred as a module soon
     os.system('cls')
 
-def linxuClear():
+def linuxclear():
     print("\033c", end="")
 
 
@@ -27,16 +25,16 @@ class cmd(Cmd):
         os.system('taskkill /f /im ' + args)
         print("Done")
 
-    def do_clear(self, args):
+    def do_clear(self):
         """it clears the screen, the name says so"""
         if platform.system()=="Windows":
-            winClear()
+            winclear()
         else: #Linux and Mac clear variant
-            linxuClear
+            linuxclear()
 
     def do_ping(self, args): #pings a website of your choosing
         """Pings a website of your choosing"""
-        host = str(args)
+        host = args
         number = 5
         def ping(host):
             param = '-n' if platform.system().lower() == 'windows' else '-c'
@@ -63,21 +61,21 @@ class cmd(Cmd):
     def do_create(self, args): #new command!
         """creates a file"""
         f = str(args)
-        with open(f, 'w') as f:
+        with open(f, 'w', encoding="ascii") as f:
             f.write(' ')
 
-    def do_date(self, args): #lists the date (works)
+    def do_date(self): #lists the date (works)
         """prints the date"""
         print("The date in your area is: " + time.strftime("%m/%d/%Y"))
 
-    def do_filelist(self, args): # lists files, it is in the name. (works)
+    def do_filelist(self): # lists files, it is in the name. (works)
         """lists file, basically like ls in linux"""
         file = input("Enter The Direct File Path To Read: ")
         dir_list2 = os.listdir(file)
         print("Files and directories in '", file, "':")
         print(dir_list2)
 
-    def do_exit(self, args):# exits terminal (conviently works)
+    def do_exit(self):# exits terminal (conviently works)
         """exit application"""
         print("logout")
         exit()
@@ -87,7 +85,7 @@ class cmd(Cmd):
         app = args
         subprocess.Popen(app) # the aftermath of the app start might be a bit buggy
 
-    def do_credits(self, args): # shows the stuff used and things (works)
+    def do_credits(self): # shows the stuff used and things (works)
         """Credits to all of the github repos and apps i used"""
         print("Icon designed in Pixelorama, go to https://github.com/Orama-Interactive/Pixelorama/ for info")
         print("Inspired by https://github.com/Cyber-Coding-Scripts/Terminal")
@@ -103,9 +101,9 @@ class cmd(Cmd):
 if __name__ == '__main__':
     prompt = cmd()
     if platform.system()=="Windows": # OS Checking
-        winClear()
+        winclear()
     else: 
-        linxuClear()
+        linuxclear()
 
     
     print("Everterm Build 21995 LabTest03")
