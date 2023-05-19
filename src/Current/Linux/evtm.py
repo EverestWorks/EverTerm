@@ -6,7 +6,6 @@ import platform
 import socket
 import shutil
 from datetime import datetime
-import keyboard
 from cmd import Cmd
 
 def winClear(): #this might seem useless but this is just  for upcoming mod support, this is going to be transferred as a module soon
