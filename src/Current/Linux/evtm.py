@@ -1,98 +1,112 @@
-from copy import copy
-import sys
 import os
 import time
 import subprocess
 import platform
-import socket
 import shutil
-from datetime import datetime
-import keyboard
-from art import *
+from cmd import Cmd
 
 
-if __name__ == "__main__":     #  Added this little thing just for the modding, this wont work if this python file is imported into your mod, see modding documentation
+def winclear(): #this might seem useless but this is just  for upcoming mod support, this is going to be transferred as a module soon
+    os.system('cls')
+
+def linuxclear():
+    print("\033c", end="")
+
+
+class cmd(Cmd):
+
+    def do_end(self, args): #new command!
+        """ENDS the app"""
+        os.system('taskkill /im ' + args)
+        print("Done")
+    
+    def do_kill(self, args): #new command!
+        """KILLS the app"""
+        os.system('taskkill /f /im ' + args)
+        print("Done")
+
+    def do_clear(self):
+        """it clears the screen, the name says so"""
+        if platform.system()=="Windows":
+            winclear()
+        else: #Linux and Mac clear variant
+            linuxclear()
+
+    def do_ping(self, args): #pings a website of your choosing
+        """Pings a website of your choosing"""
+        host = args
+        number = 5
+        def ping(host):
+            param = '-n' if platform.system().lower() == 'windows' else '-c'
+            command = ['ping', param, number, host]
+            return subprocess.call(command)
+        print(ping(host))
+
+    def do_phasecopy(self, args): # it copies phrases, what do you expect? (works)
+        """copies a phase you give it"""
+        copy = str(args)
+        print(copy)
+
+    def do_filecopy(self, args, args2): # copies file (works)
+        """copies files"""
+        first = args
+        second = args2 #you can make this a file, most preferably a directory
+        shutil.copy(first, second)
+
+    def do_summon(self, args): #new command!
+        """Launches a file of your choosing"""
+        e = str(args)
+        os.system(e)
+    
+    def do_create(self, args): #new command!
+        """creates a file"""
+        f = str(args)
+        with open(f, 'w', encoding="ascii") as f:
+            f.write(' ')
+
+    def do_date(self): #lists the date (works)
+        """prints the date"""
+        print("The date in your area is: " + time.strftime("%m/%d/%Y"))
+
+    def do_filelist(self): # lists files, it is in the name. (works)
+        """lists file, basically like ls in linux"""
+        file = input("Enter The Direct File Path To Read: ")
+        dir_list2 = os.listdir(file)
+        print("Files and directories in '", file, "':")
+        print(dir_list2)
+
+    def do_exit(self):# exits terminal (conviently works)
+        """exit application"""
+        print("logout")
+        exit()
+
+    def do_startapp(self, args): # starts an app (works)
+        """starts an app, its in the name"""
+        app = args
+        subprocess.Popen(app) # the aftermath of the app start might be a bit buggy
+
+    def do_credits(self): # shows the stuff used and things (works)
+        """Credits to all of the github repos and apps i used"""
+        print("Icon designed in Pixelorama, go to https://github.com/Orama-Interactive/Pixelorama/ for info")
+        print("Inspired by https://github.com/Cyber-Coding-Scripts/Terminal")
+        print("This product is a product of EverestWorks, please do not use for malicious intent.")
+
+
+        print("=====================TERMINAL INFO=====================") #added this section
+        print("EverTerm Version 1.1.110 Phase 2\n") 
+        print("Build Date: 23/12/2022 19:14\n")
+
+
+
+if __name__ == '__main__':
+    prompt = cmd()
     if platform.system()=="Windows": # OS Checking
-        print("OS check sucsessful, running EverTerm")
-        subprocess.Popen("cls", shell=True).communicate() 
-        time.sleep(0.5)
+        winclear()
     else: 
-        print("WARN: Linux support is in beta")
-        print("Please use at your own risk")
-        time.sleep(2)
-        print("\033c", end="")
-
-    tprint("EverTerm") # shorten this thing and remove the build date from here
-
-
-
-    while True: # the main thing
-        cmd = input("$: ")
-        if cmd == "clear": #clears screen (works)
-            if platform.system()=="Windows":
-                subprocess.Popen("cls", shell=True).communicate()
-            else: #Linux and Mac clear variant
-                print("\033c", end="") 
-        if cmd == "help": # (works)
-            print("EverTerm is still in early stages of development. See dev.md for the phases of development\n")
-            print("help: runs this command\nping: pings a website on the internet\nphasecopy:prints a phrase you type to it\nfilecopy: self explanatory\ndate: lists a date\nfilelist:lists files, what did you expect?\nclear:clears the screen\nexit: exits terminal\n") #sorry about this, im just a little lazy, i will handle this later
-            print("be sure to use / in the filecopy command for directories, WINDOWS ONLY")
-            print("\nLinux users! please use your normal path! thanks!")
-
-        if cmd == 'ping': #pings a website of your choosing (works)
-            host = input("Enter Website To Ping: ")
-            number = input("Enter How Many Times To Ping: ")
-            def ping(host):
-                param = '-n' if platform.system().lower() == 'windows' else '-c'
-                command = ['ping', param, number, host]
-                return subprocess.call(command)
-            print(ping(host))
-
-        if cmd == "phrasecopy": # it copies phrases, what do you expect? (works)
-            copy = input("Enter phase to copy:")
-            print(copy)
-
-        if cmd == "filecopy": # copies file (works)
-            first = input("Please enter your original folder with the file in single quotes:\n")
-            second = input("Enter your destination folder:\n") #you can make this a file, most preferably a directory
-            shutil.copy(first, second)
-
-        if cmd == "date": #lists the date (works)
-            print("The date in your area is: " + time.strftime("%m/%d/%Y"))
-
-        if cmd == 'filelist': # lists files, it is in the name. (works)
-            file = input("Enter The Direct File Path To Read: ")
-            dir_list2 = os.listdir(file)
-            print("Files and directories in '", file, "':")
-            print(dir_list2)
-
-        if cmd == "exit":# exits terminal (works)
-            var = "This is just a placeholder, just wait"
-            text = str(var)
-            print("logout at " + text)
-            e = open('log.txt', 'w')
-            e.write(text)
-            e.write('\n')
-            exit()
-        if cmd == "startapp": # starts an app (works)
-            print("WARN: windows users use a / instead of regular slash!\n ")
-            app = input("Enter the FULL path of the app:\n")
-            subprocess.Popen(app)
-
-        if cmd == "credits": # shows the stuff used and things (works)
-            print("Icon designed in Pixelorama, go to https://github.com/Orama-Interactive/Pixelorama/ for info")
-            print("Inspired by https://github.com/Cyber-Coding-Scripts/Terminal")
-            print("This product is a product of EverestWorks, please do not use for malicious intent.")
-            
-
-            print("==============TERMINAL INFO=====================")
-            print("EverTerm Version 1.1.233 Phase 1\n")
-            print("Build Date: 24/11/2022 20:13\n")
+        linuxclear()
 
     
-    
-
-
-
-else:
-    print("ERROR-99-11-19a: This is stated by the compiler as module, this is main file.\n Report this error to the github page at https://github.com/EverestWorks/EverTerm!")
+    print("Everterm Build 21995 LabTest03")
+    print("This build is an experimental build and possibly unstable\nIf you find a bug please report to EverestWorks")
+    prompt.prompt = "$: "
+    prompt.cmdloop("Booting Up..")

@@ -5,7 +5,7 @@
 
 The terminal for beginners to use, and mod!
 
-**NEW!!** a release schedule has been implemented, see release.txt in the source directory
+**NEW!!** we have just implemented a new cli command processing framework, there could be some bugs, please do alert us if there are bugs
 
 EverTerm Statistics:
 
@@ -54,6 +54,6 @@ Use py2exe as:
 'python setup.py py2exe' in the src directory
 
 
-v1.1.100 PATCH 1 RELEASE 2 comes April 15
+v1.1.100 PATCH 1 RELEASE 2 comes soon, linux builds arent ready yet
 
 NOTE: Ccodespaces works, use it if your lazy and dont feel like installing VSCode or VS
