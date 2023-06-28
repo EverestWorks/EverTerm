@@ -7,12 +7,12 @@ import socket
 import shutil
 from datetime import datetime
 import keyboard
-from cmd import Cmd
+from cmd import Cmd # new framwork (old comment)
 
 def winClear(): #this might seem useless but this is just  for upcoming mod support, this is going to be transferred as a module soon
     os.system('cls')
 
-def linxuClear():
+def linuxClear():
     print("\033c", end="")
 
 
@@ -33,7 +33,7 @@ class cmd(Cmd):
         if platform.system()=="Windows":
             winClear()
         else: #Linux and Mac clear variant
-            linxuClear
+            linuxClear()
 
     def do_ping(self, args): #pings a website of your choosing
         """Pings a website of your choosing"""
@@ -57,7 +57,7 @@ class cmd(Cmd):
         shutil.copy(first, second)
 
     def do_summon(self, args): #new command!
-        """Launches a file of your choosing"""
+        """Launches a file of your choosing, we're launching files, not apps here."""
         e = str(args)
         os.system(e)
     
