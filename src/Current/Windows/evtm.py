@@ -3,10 +3,7 @@ import os
 import time
 import subprocess
 import platform
-import socket
 import shutil
-from datetime import datetime
-import keyboard
 from cmd import Cmd
 
 def winClear(): #this might seem useless but this is just  for upcoming mod support, this is going to be transferred as a module soon
@@ -109,7 +106,8 @@ if __name__ == '__main__':
         linxuClear()
 
     
-    print("Everterm Build 21995 LabTest03")
+    print("Everterm Build 23948 LabTest02 Interval 5 ")
+    print("Public Beta 1")
     print("This build is an experimental build and possibly unstable\nIf you find a bug please report to EverestWorks")
     prompt.prompt = "$: "
     prompt.cmdloop("Booting Up..")
