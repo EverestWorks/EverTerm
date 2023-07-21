@@ -22,8 +22,5 @@ Python Minimum Version: Python 3
 
 The source is for **PYTHON 3+ ONLY**
 
-
-
-v1.1.100 PATCH 1 RELEASE 2 comes soon, linux builds arent ready yet
-
-NOTE: Ccodespaces works, use it if your lazy and dont feel like installing VSCode or VS
+NOTE: Codespaces works, use it if your lazy and dont feel like installing VSCode or VS
+NOTE: You can no longer compile our source with py2exe
