@@ -10,8 +10,8 @@ CMD.exe
 ======================================
 
 
-If you do not have the pyinstaller or py2exe mmodule(s), install with the command: 
-`pip install pyinstaller` or `pip install py2exe`
+If you do not have the pyinstaller or  install with the command: 
+`pip install pyinstaller` or 
 
 Once pyinstaller is ready, download the source with either
 `gh repo clone EverestWorks/EverTerm` (Alert me if it doesn't work)!
@@ -24,5 +24,4 @@ Once pyinstaller is ready, download the source with either
 Then change your directory to the source
 Use the pyinstaller command as: 
 `pyinstaller -i icon.ico evtm.py` in the src directory
-Use py2exe as:
-'python setup.py py2exe' in the src directory
+
