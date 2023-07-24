@@ -48,7 +48,7 @@ mod load <mod_name>: Load a specific mod from the mods directory.
 mod unload <mod_name>: Unload a specific mod, making its custom commands unavailable.
 
 Examples of using the mod management commands:
-------------------------------
+~~~
 $: mod list
 Loaded Mods:
 - my_mod
@@ -60,6 +60,7 @@ new_mod loaded successfully.
 
 $: mod unload my_mod
 my_mod unloaded successfully.
+~~~
 ------------------------------
 ## Mod Naming Convention
 To ensure that mods are recognized and loaded correctly, please follow these naming conventions:
@@ -67,6 +68,7 @@ To ensure that mods are recognized and loaded correctly, please follow these nam
 Mod files should have a .py extension.
 Mod file names should only contain letters, digits, and underscores (no spaces or special characters).
 Avoid using Python keywords or built-in module names as mod file names.
+
 ## Tips
 You can create multiple mod files, each defining different custom commands.
 Mods can be added or modified while the application is running. The application will automatically pick up any changes in the mods directory.
