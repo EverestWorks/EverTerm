@@ -81,5 +81,12 @@ Your mod has to be understandable from the name of the file to help prevent conf
 You can create multiple mod files, each defining different custom commands.
 Mods can be added or modified while the application is running. The application will automatically pick up any changes in the mods directory.
 
+## Troubleshooting
+
+If your mod doesnt load, we have logging included in app.log for you to be able to see what mods have been loaded and if your command(s) have been loaded.
+If it doesnt register there, it might be unrecognised by our program, and ensure it is in python. if it is in the directory and correctly named, open an issue on EverestWorks github page, we will try our best to see if it is on your end or our end. please provide the mod code to assist troublestooting efforts.
+
 ## Summary
 The mod framework allows users to extend the terminal application's functionality by defining custom commands in separate mod files. The application dynamically loads all the mods present in the mods directory, making the custom commands accessible during the terminal session. This provides users with the flexibility to tailor the application to their specific needs without having to modify the main application's source code.
+
+

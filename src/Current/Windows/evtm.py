@@ -5,6 +5,21 @@ import platform
 import shutil
 from cmd import Cmd
 import importlib
+import logging
+
+# Get the directory of the script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Set up logging configuration
+logging.basicConfig(
+    level=logging.DEBUG,
+    filename=os.path.join(script_dir, "app.log"),  # Use os.path.join to construct the log file path
+    filemode='w',
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+# Define a logger
+logger = logging.getLogger('app')
 
 def clear_screen():
     if platform.system() == "Windows":
@@ -15,11 +30,17 @@ def clear_screen():
 class MyCmd(Cmd):
     def __init__(self):
         super().__init__()
+
+        # Load user-defined commands from mods
         self.user_defined_commands = {}
         self.load_mods()
 
     def load_mods(self):
-        mods_dir = "mods"
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        mods_dir = os.path.join(script_dir, "mods")
+
+        logger.debug(f"Mods directory: {mods_dir}")
+
         if not os.path.exists(mods_dir):
             os.makedirs(mods_dir)
 
@@ -28,12 +49,36 @@ class MyCmd(Cmd):
                 mod_name = mod_file[:-3]
                 try:
                     user_commands = importlib.import_module(f"mods.{mod_name}")
-                    self.user_defined_commands.update({
+                    commands_added = {
                         name: func for name, func in user_commands.__dict__.items()
                         if callable(func) and not name.startswith("__")
-                    })
+                    }
+                    self.user_defined_commands.update(commands_added)
+                    logger.debug(f"{mod_name} loaded successfully. Custom commands: {commands_added}")
                 except ImportError:
-                    print(f"Failed to load {mod_file}. Please check the syntax and content of the mod file.")
+                    logger.debug(f"Failed to load {mod_file}. Please check the syntax and content of the mod file.")
+
+
+    def do_command(self, line):
+        """Handles the processing of user commands."""
+        print(f"Received command: '{line}'")
+        print(f"User-defined commands: {self.user_defined_commands}")
+        print(f"Registered commands: {self.get_names()}")
+
+        # Check for custom commands from loaded mods
+        for command_name, command_func in self.user_defined_commands.items():
+            print(f"Checking custom command: {command_name}")
+            if line.startswith(command_name):
+                args = line[len(command_name):].strip()
+                print(f"Custom command args: {args}")
+                command_func(args)
+                return
+
+        # Handle commands from the base class (Cmd)
+        try:
+            super().onecmd(line)
+        except Exception as e:
+            print(f"Error: {e}")
 
     def default(self, line):
         # Handle mod management commands
