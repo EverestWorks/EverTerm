@@ -6,7 +6,7 @@
 The terminal for beginners to use, and mod!
 
 **NEW!!** we have just implemented a new cli command processing framework, there could be some bugs, please do alert us if there are bugs
-
+**NEW!!** A new modding framework has just been implemented, and invide all of you do test it out!
 EverTerm Statistics:
 
 =====================================================
