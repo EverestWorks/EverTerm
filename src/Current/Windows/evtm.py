@@ -4,6 +4,7 @@ import subprocess
 import platform
 import shutil
 from cmd import Cmd
+import importlib
 
 def clear_screen():
     if platform.system() == "Windows":
@@ -14,25 +15,83 @@ def clear_screen():
 class MyCmd(Cmd):
     def __init__(self):
         super().__init__()
-        self.user_defined_commands = self.load_user_commands()
+        self.user_defined_commands = {}
+        self.load_mods()
 
-    def load_user_commands(self):
-        try:
-            import user_commands
-            return {
-                name: func for name, func in user_commands.__dict__.items()
-                if callable(func) and not name.startswith("__")
-            }
-        except ImportError:
-            return {}
+    def load_mods(self):
+        mods_dir = "mods"
+        if not os.path.exists(mods_dir):
+            os.makedirs(mods_dir)
+
+        for mod_file in os.listdir(mods_dir):
+            if mod_file.endswith(".py"):
+                mod_name = mod_file[:-3]
+                try:
+                    user_commands = importlib.import_module(f"mods.{mod_name}")
+                    self.user_defined_commands.update({
+                        name: func for name, func in user_commands.__dict__.items()
+                        if callable(func) and not name.startswith("__")
+                    })
+                except ImportError:
+                    print(f"Failed to load {mod_file}. Please check the syntax and content of the mod file.")
 
     def default(self, line):
-        # Handle user-defined commands
-        command, *args = line.split()
-        if command in self.user_defined_commands:
-            self.user_defined_commands[command](" ".join(args))
+        # Handle mod management commands
+        if line.startswith("mod "):
+            self.handle_mod_command(line[4:])
         else:
-            print("Command not found.")
+            # Handle user-defined commands
+            command, *args = line.split()
+            if command in self.user_defined_commands:
+                self.user_defined_commands[command](" ".join(args))
+            else:
+                print("Command not found.")
+
+    def handle_mod_command(self, line):
+        commands = line.split()
+
+        if len(commands) < 1:
+            print("Usage: mod <list/load/unload> [mod_name]")
+            return
+
+        cmd = commands[0].lower()
+
+        if cmd == 'list':
+            self.list_mods()
+        elif cmd == 'load':
+            if len(commands) < 2:
+                print("Usage: mod load <mod_name>")
+                return
+            self.load_mod(commands[1])
+        elif cmd == 'unload':
+            if len(commands) < 2:
+                print("Usage: mod unload <mod_name>")
+                return
+            self.unload_mod(commands[1])
+        else:
+            print("Invalid command. Usage: mod <list/load/unload> [mod_name]")
+
+    def list_mods(self):
+        """List currently loaded mods."""
+        print("Loaded Mods:")
+        for mod_name in self.user_defined_commands:
+            print(f"- {mod_name}")
+
+    def load_mod(self, mod_name):
+        """Load a specific mod."""
+        try:
+            importlib.import_module(f"mods.{mod_name}")
+            print(f"{mod_name} loaded successfully.")
+        except ImportError:
+            print(f"Failed to load {mod_name}. Please check the syntax and content of the mod file.")
+
+    def unload_mod(self, mod_name):
+        """Unload a specific mod."""
+        if mod_name in self.user_defined_commands:
+            del self.user_defined_commands[mod_name]
+            print(f"{mod_name} unloaded successfully.")
+        else:
+            print(f"{mod_name} is not loaded.")
 
     def do_end(self, args):
         """ENDS the app"""

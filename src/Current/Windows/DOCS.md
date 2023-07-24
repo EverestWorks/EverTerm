@@ -1,4 +1,11 @@
-# Mod Framework Documentation
+# Documentation
+
+This is the documentation for EverTerm.
+
+For help with commands, run the `help` command in EverTerm.
+
+
+## Mod Framework Documentation
 
 The mod framework is an extension to the terminal application that allows users to add custom commands without modifying the main application's source code. Users can create separate Python files, referred to as "mods," that define their custom commands. The main application dynamically loads these mods at runtime, making the custom commands available for use during the terminal session.
 
@@ -68,6 +75,7 @@ To ensure that mods are recognized and loaded correctly, please follow these nam
 Mod files should have a .py extension.
 Mod file names should only contain letters, digits, and underscores (no spaces or special characters).
 Avoid using Python keywords or built-in module names as mod file names.
+Your mod has to be understandable from the name of the file to help prevent confusion when you have more than one mnod loaded.
 
 ## Tips
 You can create multiple mod files, each defining different custom commands.
