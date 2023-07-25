@@ -1,21 +1,21 @@
 ======================================
 
 To compile, you need:
-Linux OS with python fully setup (pip if you dont have the modules needed)
+Linux OS with python and pip installed and fully functional
 Brain, 
 Hands, 
-bash, zsh, whatever shell you use
+a functioning shell
 
 
 ======================================
 
 
-If you do not have the pyinstaller, install with the command: 
+If you do not have the pyinstaller, install it with the command: 
 `pip install pyinstaller` 
 
 Once pyinstaller is ready, download the source with either
 `gh repo clone EverestWorks/EverTerm` (Alert me if it doesn't work)!
-If GH not installed, go to https://cli.github.com
+If GH is not installed, go to https://cli.github.com
 
 ======================================
 
