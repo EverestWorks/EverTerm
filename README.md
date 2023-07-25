@@ -5,15 +5,15 @@
 
 The terminal for beginners to use, and mod!
 
-**NEW!!** we have just implemented a new cli command processing framework, there could be some bugs, please do alert us if there are bugs
+**NEW!!** We have just implemented a new command processing framework, there could be some bugs, please do alert us if there are bugs
 
-**NEW!!** A new modding framework has just been implemented, and invide all of you do test it out!
+**NEW!!** A new modding framework has just been implemented, and invite all of you to test it out!
+
 EverTerm Statistics:
 
 =====================================================
 
-
-Release Version: Version 1.0.022
+Release Version: Version 1.1.420
 
 OS Platform: Windows 10, Linux(beta)
 
@@ -23,5 +23,6 @@ Python Minimum Version: Python 3
 
 The source is for **PYTHON 3+ ONLY**
 
-NOTE: Codespaces works, use it if your lazy and dont feel like installing VSCode or VS
 NOTE: You can no longer compile our source with py2exe
+
+NOTE: Linux builds are being worked on, hang tight!
