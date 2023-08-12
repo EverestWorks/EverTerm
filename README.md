@@ -11,7 +11,7 @@ EverTerm Statistics:
 =====================================================
 
 
-Release Version: Version 1.0.022
+Release Version: Version 1.0.420
 
 OS Platform: Windows 10, Linux(beta)
 
