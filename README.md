@@ -3,6 +3,8 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
 
+**ALERT**: Linux users, your binaries are here!
+
 The terminal for beginners to use, and mod!
 
 **NEW!!** We have just implemented a new command processing framework, there could be some bugs, please do alert us if there are bugs
@@ -25,4 +27,3 @@ The source is for **PYTHON 3+ ONLY**
 
 NOTE: You can no longer compile our source with py2exe
 
-NOTE: Linux builds are being worked on, hang tight!
