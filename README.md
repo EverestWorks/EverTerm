@@ -7,7 +7,7 @@
 
 The terminal for beginners to use, and mod!
 
-**NEW!!** we have just implemented a new cli command processing framework, there could be some bugs, please do alert us if there are bugs
+**NEW!!** We have just implemented a new CLI command processing framework, there could be some bugs, please do alert us if there are bugs
 
 EverTerm Statistics:
 
@@ -24,6 +24,5 @@ Python Minimum Version: Python 3
 
 The source is for **PYTHON 3+ ONLY**
 
-NOTE: Codespaces works, use it if your lazy and dont feel like installing VSCode or VS
 NOTE: You can no longer compile our source with py2exe
 
