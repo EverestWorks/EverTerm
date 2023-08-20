@@ -102,13 +102,16 @@ class MyCmd(Cmd):
         cmd = commands[0].lower()
 
         if cmd == 'list':
+            """list available mods"""
             self.list_mods()
         elif cmd == 'load':
+            """load the mod you want"""
             if len(commands) < 2:
                 print("Usage: mod load <mod_name>")
                 return
             self.load_mod(commands[1])
         elif cmd == 'unload':
+            """unload the mod you want"""
             if len(commands) < 2:
                 print("Usage: mod unload <mod_name>")
                 return
