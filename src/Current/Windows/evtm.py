@@ -166,7 +166,7 @@ class MyCmd(Cmd):
         command = ['ping', param, str(number), host]
         subprocess.call(command)
 
-    def do_phasecopy(self, args):
+    def do_echo(self, args):
         """Copies a phrase you give it"""
         copy = args
         print(copy)
@@ -197,7 +197,7 @@ class MyCmd(Cmd):
 
     def do_filelist(self, args):
         """Lists files and directories in a given path"""
-        file_path = input("Enter The Direct File Path To Read: ")
+        file_path = args
         dir_list = os.listdir(file_path)
         print("Files and directories in '", file_path, "':")
         print(dir_list)
@@ -210,22 +210,21 @@ class MyCmd(Cmd):
     def do_startapp(self, args):
         """Starts an app"""
         app = args
-        subprocess.Popen(app)  # The aftermath of the app start might be a bit buggy
+        subprocess.Popen(app)  # unfortunatly, your getting the apps cmd outputs in the terminal
 
     def do_credits(self, args):
-        """Credits to all the GitHub repos and apps used"""
+        """Credits to all the repos and apps used to make this product that deserve credits"""
         print("Icon designed in Pixelorama, go to https://github.com/Orama-Interactive/Pixelorama/ for info")
         print("Inspired by https://github.com/Cyber-Coding-Scripts/Terminal")
         print("This product is a product of EverestWorks, please do not use for malicious intent.")
         print("=====================TERMINAL INFO=====================")
-        print("EverTerm Build 23948 LabTest02 Interval 5\n")
+        print("EverTerm v1.0.420 LabTest02 Interval 1\n")
         print("Build Date: 21/7/2023 12:59\n")
 
 if __name__ == '__main__':
     prompt = MyCmd()
     clear_screen()
-    print("Everterm Build 23948 LabTest02 Interval 5 ")
-    print("Public Beta 1")
+    print("Everterm v1.0.420 LabTest02 Interval 1 ")
     print("This build is an experimental build and possibly unstable")
     print("If you find a bug please report to EverestWorks")
     prompt.prompt = "$: "

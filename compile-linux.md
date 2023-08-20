@@ -1,10 +1,15 @@
 ======================================
 
 To compile, you need:
-Linux OS with python fully setup (pip if you dont have the modules needed)
-Brain, 
+Linux OS with python fully setup, pip (if you dont have pyinstaller)
+
+Brain,
+
 Hands, 
-bash, zsh, whatever shell you use
+
+terminal,
+
+gh (install with your package manager if not present)
 
 
 ======================================
@@ -24,4 +29,5 @@ If GH not installed, go to https://cli.github.com
 Then change your directory to the source
 Use the pyinstaller command as: 
 `pyinstaller -i icon.ico evtm.py` in the src directory
+once it completes, go into dist and into the folder inside and run `./evtm` after `chmod +x ./evtm`
 
