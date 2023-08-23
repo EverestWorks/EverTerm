@@ -1,7 +1,7 @@
 ======================================
 
 To compile, you need:
-Windows with Python in the PATH, 
+Windows with Python fully set up(runable from the source)
 Brain, 
 Hands, 
 CMD.exe

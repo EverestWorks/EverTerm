@@ -143,19 +143,30 @@ class MyCmd(Cmd):
 
     def do_end(self, args):
         """ENDS the app"""
+        if not args:
+            print("Usage: end <APP>")
+            return
+
         if platform.system() == "Windows":
             os.system('taskkill /im ' + args)
         else:
             os.system('pkill ' + args)
-        print("Done")
+
+        print(args + " has been ended")
 
     def do_kill(self, args):
         """KILLS the app"""
+        if not args:
+            print("Usage: kill <APP>")
+            return
+
         if platform.system() == "Windows":
             os.system('taskkill /f /im ' + args)
         else:
             os.system('pkill -9 ' + args)
-        print("Done")
+
+        print(args + " has been killed")
+
 
     def do_clear(self, args):
         """Clears the screen"""
@@ -182,6 +193,7 @@ class MyCmd(Cmd):
         else:
             first, second = args
             shutil.copy(first, second)
+        
 
     def do_summon(self, args):
         """Launches a file of your choosing"""
@@ -190,9 +202,13 @@ class MyCmd(Cmd):
 
     def do_create(self, args):
         """Creates a file"""
-        f = args
-        with open(f, 'w') as f:
-            f.write(' ')
+        if len(args) != 2:
+            print("Usage: create <filename.extension>")
+        else:
+            f = args
+            with open(f, 'w') as f:
+                f.write(' ')
+
 
     def do_date(self, args):
         """Prints the date"""
@@ -200,10 +216,14 @@ class MyCmd(Cmd):
 
     def do_filelist(self, args):
         """Lists files and directories in a given path"""
-        file_path = args
-        dir_list = os.listdir(file_path)
-        print("Files and directories in '", file_path, "':")
-        print(dir_list)
+        if len(args) != 2:
+            print("Usage: filelist <full/path/of/directory>")
+        else:
+            file_path = args
+            dir_list = os.listdir(file_path)
+            print("Files and directories in '", file_path, "':")
+            print(dir_list)
+
 
     def do_exit(self, args):
         """Exit application"""
@@ -212,8 +232,11 @@ class MyCmd(Cmd):
 
     def do_startapp(self, args):
         """Starts an app"""
-        app = args
-        subprocess.Popen(app)  # unfortunatly, your getting the apps cmd outputs in the terminal
+        if len(args) != 2:
+            print("Usage: startapp <appname>")
+        else:
+            app = args
+            subprocess.Popen(app)  # unfortunatly, your getting the apps cmd outputs in the terminal
 
     def do_credits(self, args):
         """Credits to all the repos and apps used to make this product that deserve credits"""
@@ -221,8 +244,8 @@ class MyCmd(Cmd):
         print("Inspired by https://github.com/Cyber-Coding-Scripts/Terminal")
         print("This product is a product of EverestWorks, please do not use for malicious intent.")
         print("=====================TERMINAL INFO=====================")
-        print("EverTerm v1.0.420 LabTest02 Interval 1\n")
-        print("Build Date: 21/7/2023 12:59\n")
+        print("EverTerm v1.0.420 LabTest01 Interval 2\n")
+        print("Build Date: 24/8/2023 19:42\n")
 
 if __name__ == '__main__':
     prompt = MyCmd()
