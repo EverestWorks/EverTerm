@@ -1,14 +1,7 @@
-Phase 1 release schedule:
-at least 1 release every month
+Major release every year
+minor release every 2 months
 
-Phase 2 release schedule:
-1 stable release yearly
-2 short term releases every 4 months
-
-Phase 3 Release schedule: 
-1 LTS release with support for 3 years
-2 short term releases with 1 year support
-
-Regular builds release schedule:
-1 LTS release with support for 3 years
-3 short term releases with 1 year support when a release is agreed upon
+Versioning:
+we are retaining the "Everterm v1.0.420 LabTest02 Interval 1 " style but with changes
+"Everterm v1.0.420 LabTest02 Interval 1 " will be "Everterm v1.0.420 CODENAME" with the v1.0.xxx being updated per release
+CODENAME will be something along the lines of "EverTerm v1.0.420 Redstone" meaning the codename is a random word in the dictionary

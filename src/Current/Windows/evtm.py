@@ -186,7 +186,7 @@ class MyCmd(Cmd):
         print(copy)
 
     def do_filecopy(self, args):
-        """Copies files"""
+        """Copies files, what more do i need to add?"""
         args = args.split()
         if len(args) != 2:
             print("Usage: filecopy <source_file> <destination_directory>")
@@ -237,6 +237,25 @@ class MyCmd(Cmd):
         else:
             app = args
             subprocess.Popen(app)  # unfortunatly, your getting the apps cmd outputs in the terminal
+    
+    def do_docs(self,args):
+        """Basically help but more detailed"""
+        if len(args) != 2:
+            print("Usage: docs [COMMAND]")
+        else:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            docs_dir = os.path.join(script_dir, "help.ex")
+
+            logger.debug(f"docs database directory: {docs_dir}")
+
+            if not os.path.exists(docs_dir):
+                os.makedirs(docs_dir)
+
+            os.chdir(docs_dir)
+            f = "docs.txt"
+            with open(f, 'w') as f:
+                # f.write(' ')
+                pass
 
     def do_credits(self, args):
         """Credits to all the repos and apps used to make this product that deserve credits"""
@@ -253,5 +272,8 @@ if __name__ == '__main__':
     print("Everterm v1.0.420 LabTest02 Interval 1 ")
     print("This build is an experimental build and possibly unstable")
     print("If you find a bug please report to EverestWorks")
+    print("Logs can be found in the directory the executable is located in, under the name app.log")
     prompt.prompt = "$: "
-    prompt.cmdloop("Booting Up..")
+    prompt.cmdloop("Starting Up..")
+
+
