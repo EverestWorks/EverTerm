@@ -140,9 +140,14 @@ class MyCmd(Cmd):
             print(f"{mod_name} unloaded successfully.")
         else:
             print(f"{mod_name} is not loaded.")
+#
+#
+# Separating mods part from the main thing
+#
+#
 
     def do_end(self, args):
-        """ENDS the app"""
+        """asks politely for the app to die. USAGE: end [APP]"""
         if not args:
             print("Usage: end <APP>")
             return
@@ -155,7 +160,7 @@ class MyCmd(Cmd):
         print(args + " has been ended")
 
     def do_kill(self, args):
-        """KILLS the app"""
+        """Murders the app in the middle of whatever it is doing. USAGE: kill [app]"""
         if not args:
             print("Usage: kill <APP>")
             return
@@ -168,32 +173,87 @@ class MyCmd(Cmd):
         print(args + " has been killed")
 
 
-    def do_clear(self, args):
+    def do_clear(self):
         """Clears the screen"""
         clear_screen()
 
     def do_ping(self, args):
-        """Pings a website of your choosing"""
-        host = args
-        number = 4
-        param = '-n' if platform.system().lower() == 'windows' else '-c'
-        command = ['ping', param, str(number), host]
-        subprocess.call(command)
+        """Pings a website of your choosing. USAGE: ping [-c] <website>"""
+        args = args.split()  # Split the arguments into a list
+
+        if args[0] == "-c":
+            if len(args) != 3:
+                print("Usage: ping -c <count> <host>")
+                return
+
+            count = args[1]
+            host = args[2]
+            param = '-n' if platform.system().lower() == 'windows' else '-c'
+            command = ['ping', param, str(count), host]
+            subprocess.call(command)
+        else:
+            host = args[0]
+            number = 4
+            param = '-n' if platform.system().lower() == 'windows' else '-c'
+            command = ['ping', param, str(number), host]
+            subprocess.call(command)
+
 
     def do_echo(self, args):
         """Copies a phrase you give it"""
         copy = args
         print(copy)
 
-    def do_filecopy(self, args):
-        """Copies files, what more do i need to add?"""
+    def do_copy(self, args):
+        """Copies files and directories. Usage: filecopy [-d] <source> <destination>"""
         args = args.split()
-        if len(args) != 2:
-            print("Usage: filecopy <source_file> <destination_directory>")
+
+        if len(args) < 2:
+            print("Usage: filecopy [-d] <source> <destination>")
+            return
+
+        if args[0] == "-d":
+            # Copy directory contents
+            source_dir = args[1]
+            destination_dir = args[2]
+
+            if not os.path.exists(source_dir):
+                print("Source directory does not exist.")
+                return
+
+            if not os.path.exists(destination_dir):
+                os.makedirs(destination_dir)
+
+            try:
+                for item in os.listdir(source_dir):
+                    source_item = os.path.join(source_dir, item)
+                    if os.path.isfile(source_item):
+                        shutil.copy(source_item, destination_dir)
+                    elif os.path.isdir(source_item):
+                        destination_item = os.path.join(destination_dir, item)
+                        shutil.copytree(source_item, destination_item)
+                print("Directory contents copied successfully.")
+            except Exception as e:
+                print("Error copying directory contents:", str(e))
         else:
-            first, second = args
-            shutil.copy(first, second)
-        
+            # Copy file
+            source_file = args[0]
+            destination_dir = args[1]
+
+            if not os.path.exists(source_file):
+                print("Source file does not exist.")
+                return
+
+            if not os.path.isdir(destination_dir):
+                print("Destination directory is not valid.")
+                return
+
+            try:
+                shutil.copy(source_file, destination_dir)
+                print("File copied successfully.")
+            except Exception as e:
+                print("Error copying file:", str(e))
+
 
     def do_summon(self, args):
         """Launches a file of your choosing"""
@@ -210,7 +270,7 @@ class MyCmd(Cmd):
                 f.write(' ')
 
 
-    def do_date(self, args):
+    def do_date(self):
         """Prints the date"""
         print("The date in your area is:", time.strftime("%m/%d/%Y"))
 
@@ -225,7 +285,7 @@ class MyCmd(Cmd):
             print(dir_list)
 
 
-    def do_exit(self, args):
+    def do_exit(self):
         """Exit application"""
         print("logout")
         return True  # Returning True will exit the cmd loop
@@ -238,7 +298,7 @@ class MyCmd(Cmd):
             app = args
             subprocess.Popen(app)  # unfortunatly, your getting the apps cmd outputs in the terminal
     
-    def do_docs(self,args):
+    def do_docs(self, args):
         """Basically help but more detailed"""
         if len(args) != 2:
             print("Usage: docs [COMMAND]")
@@ -257,7 +317,7 @@ class MyCmd(Cmd):
                 # f.write(' ')
                 pass
 
-    def do_credits(self, args):
+    def do_credits(self):
         """Credits to all the repos and apps used to make this product that deserve credits"""
         print("Icon designed in Pixelorama, go to https://github.com/Orama-Interactive/Pixelorama/ for info")
         print("Inspired by https://github.com/Cyber-Coding-Scripts/Terminal")
