@@ -335,5 +335,3 @@ if __name__ == '__main__':
     print("Logs can be found in the directory the executable is located in, under the name app.log")
     prompt.prompt = "$: "
     prompt.cmdloop("Starting Up..")
-
-
