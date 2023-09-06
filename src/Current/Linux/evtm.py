@@ -1,98 +1,232 @@
-from copy import copy
-import sys
 import os
 import time
 import subprocess
 import platform
-import socket
 import shutil
-from datetime import datetime
-import keyboard
-from art import *
+from cmd import Cmd
+import importlib
+import logging
+
+# Get the directory of the script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Set up logging configuration
+logging.basicConfig(
+    level=logging.DEBUG,
+    filename=os.path.join(script_dir, "app.log"),  # Use os.path.join to construct the log file path
+    filemode='w',
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+# Define a logger
+logger = logging.getLogger('app')
+
+def clear_screen():
+    if platform.system() == "Windows":
+        os.system('cls')
+    else:
+        os.system('clear')
+
+class MyCmd(Cmd):
+    def __init__(self):
+        super().__init__()
+
+        # Load user-defined commands from mods
+        self.user_defined_commands = {}
+        self.load_mods()
+
+    def load_mods(self):
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        mods_dir = os.path.join(script_dir, "mods")
+
+        logger.debug(f"Mods directory: {mods_dir}")
+
+        if not os.path.exists(mods_dir):
+            os.makedirs(mods_dir)
+
+        for mod_file in os.listdir(mods_dir):
+            if mod_file.endswith(".py"):
+                mod_name = mod_file[:-3]
+                try:
+                    user_commands = importlib.import_module(f"mods.{mod_name}")
+                    commands_added = {
+                        name: func for name, func in user_commands.__dict__.items()
+                        if callable(func) and not name.startswith("__")
+                    }
+                    self.user_defined_commands.update(commands_added)
+                    logger.debug(f"{mod_name} loaded successfully. Custom commands: {commands_added}")
+                except ImportError:
+                    logger.debug(f"Failed to load {mod_file}. Please check the syntax and content of the mod file.")
 
 
-if __name__ == "__main__":     #  Added this little thing just for the modding, this wont work if this python file is imported into your mod, see modding documentation
-    if platform.system()=="Windows": # OS Checking
-        print("OS check sucsessful, running EverTerm")
-        subprocess.Popen("cls", shell=True).communicate() 
-        time.sleep(0.5)
-    else: 
-        print("WARN: Linux support is in beta")
-        print("Please use at your own risk")
-        time.sleep(2)
-        print("\033c", end="")
+    def do_command(self, line):
+        """Handles the processing of user commands."""
+        print(f"Received command: '{line}'")
+        print(f"User-defined commands: {self.user_defined_commands}")
+        print(f"Registered commands: {self.get_names()}")
 
-    tprint("EverTerm") # shorten this thing and remove the build date from here
+        # Check for custom commands from loaded mods
+        for command_name, command_func in self.user_defined_commands.items():
+            print(f"Checking custom command: {command_name}")
+            if line.startswith(command_name):
+                args = line[len(command_name):].strip()
+                print(f"Custom command args: {args}")
+                command_func(args)
+                return
 
+        # Handle commands from the base class (Cmd)
+        try:
+            super().onecmd(line)
+        except Exception as e:
+            print(f"Error: {e}")
 
+    def default(self, line):
+        # Handle mod management commands
+        if line.startswith("mod "):
+            self.handle_mod_command(line[4:])
+        else:
+            # Handle user-defined commands
+            command, *args = line.split()
+            if command in self.user_defined_commands:
+                self.user_defined_commands[command](" ".join(args))
+            else:
+                print("Command not found.")
 
-    while True: # the main thing
-        cmd = input("$: ")
-        if cmd == "clear": #clears screen (works)
-            if platform.system()=="Windows":
-                subprocess.Popen("cls", shell=True).communicate()
-            else: #Linux and Mac clear variant
-                print("\033c", end="") 
-        if cmd == "help": # (works)
-            print("EverTerm is still in early stages of development. See dev.md for the phases of development\n")
-            print("help: runs this command\nping: pings a website on the internet\nphasecopy:prints a phrase you type to it\nfilecopy: self explanatory\ndate: lists a date\nfilelist:lists files, what did you expect?\nclear:clears the screen\nexit: exits terminal\n") #sorry about this, im just a little lazy, i will handle this later
-            print("be sure to use / in the filecopy command for directories, WINDOWS ONLY")
-            print("\nLinux users! please use your normal path! thanks!")
+    def handle_mod_command(self, line):
+        commands = line.split()
 
-        if cmd == 'ping': #pings a website of your choosing (works)
-            host = input("Enter Website To Ping: ")
-            number = input("Enter How Many Times To Ping: ")
-            def ping(host):
-                param = '-n' if platform.system().lower() == 'windows' else '-c'
-                command = ['ping', param, number, host]
-                return subprocess.call(command)
-            print(ping(host))
+        if len(commands) < 1:
+            print("Usage: mod <list/load/unload> [mod_name]")
+            return
 
-        if cmd == "phrasecopy": # it copies phrases, what do you expect? (works)
-            copy = input("Enter phase to copy:")
-            print(copy)
+        cmd = commands[0].lower()
 
-        if cmd == "filecopy": # copies file (works)
-            first = input("Please enter your original folder with the file in single quotes:\n")
-            second = input("Enter your destination folder:\n") #you can make this a file, most preferably a directory
+        if cmd == 'list':
+            self.list_mods()
+        elif cmd == 'load':
+            if len(commands) < 2:
+                print("Usage: mod load <mod_name>")
+                return
+            self.load_mod(commands[1])
+        elif cmd == 'unload':
+            if len(commands) < 2:
+                print("Usage: mod unload <mod_name>")
+                return
+            self.unload_mod(commands[1])
+        else:
+            print("Invalid command. Usage: mod <list/load/unload> [mod_name]")
+
+    def list_mods(self):
+        """List currently loaded mods."""
+        print("Loaded Mods:")
+        for mod_name in self.user_defined_commands:
+            print(f"- {mod_name}")
+
+    def load_mod(self, mod_name):
+        """Load a specific mod."""
+        try:
+            importlib.import_module(f"mods.{mod_name}")
+            print(f"{mod_name} loaded successfully.")
+        except ImportError:
+            print(f"Failed to load {mod_name}. Please check the syntax and content of the mod file.")
+
+    def unload_mod(self, mod_name):
+        """Unload a specific mod."""
+        if mod_name in self.user_defined_commands:
+            del self.user_defined_commands[mod_name]
+            print(f"{mod_name} unloaded successfully.")
+        else:
+            print(f"{mod_name} is not loaded.")
+
+    def do_end(self, args):
+        """ENDS the app"""
+        if platform.system() == "Windows":
+            os.system('taskkill /im ' + args)
+        else:
+            os.system('pkill ' + args)
+        print("Done")
+
+    def do_kill(self, args):
+        """KILLS the app"""
+        if platform.system() == "Windows":
+            os.system('taskkill /f /im ' + args)
+        else:
+            os.system('pkill -9 ' + args)
+        print("Done")
+
+    def do_clear(self, args):
+        """Clears the screen"""
+        clear_screen()
+
+    def do_ping(self, args):
+        """Pings a website of your choosing"""
+        host = args
+        number = 4
+        param = '-n' if platform.system().lower() == 'windows' else '-c'
+        command = ['ping', param, str(number), host]
+        subprocess.call(command)
+
+    def do_phasecopy(self, args):
+        """Copies a phrase you give it"""
+        copy = args
+        print(copy)
+
+    def do_filecopy(self, args):
+        """Copies files"""
+        args = args.split()
+        if len(args) != 2:
+            print("Usage: filecopy <source_file> <destination_directory>")
+        else:
+            first, second = args
             shutil.copy(first, second)
 
-        if cmd == "date": #lists the date (works)
-            print("The date in your area is: " + time.strftime("%m/%d/%Y"))
+    def do_summon(self, args):
+        """Launches a file of your choosing"""
+        e = args
+        os.system(e)
 
-        if cmd == 'filelist': # lists files, it is in the name. (works)
-            file = input("Enter The Direct File Path To Read: ")
-            dir_list2 = os.listdir(file)
-            print("Files and directories in '", file, "':")
-            print(dir_list2)
+    def do_create(self, args):
+        """Creates a file"""
+        f = args
+        with open(f, 'w') as f:
+            f.write(' ')
 
-        if cmd == "exit":# exits terminal (works)
-            var = "This is just a placeholder, just wait"
-            text = str(var)
-            print("logout at " + text)
-            e = open('log.txt', 'w')
-            e.write(text)
-            e.write('\n')
-            exit()
-        if cmd == "startapp": # starts an app (works)
-            print("WARN: windows users use a / instead of regular slash!\n ")
-            app = input("Enter the FULL path of the app:\n")
-            subprocess.Popen(app)
+    def do_date(self, args):
+        """Prints the date"""
+        print("The date in your area is:", time.strftime("%m/%d/%Y"))
 
-        if cmd == "credits": # shows the stuff used and things (works)
-            print("Icon designed in Pixelorama, go to https://github.com/Orama-Interactive/Pixelorama/ for info")
-            print("Inspired by https://github.com/Cyber-Coding-Scripts/Terminal")
-            print("This product is a product of EverestWorks, please do not use for malicious intent.")
-            
+    def do_filelist(self, args):
+        """Lists files and directories in a given path"""
+        file_path = input("Enter The Direct File Path To Read: ")
+        dir_list = os.listdir(file_path)
+        print("Files and directories in '", file_path, "':")
+        print(dir_list)
 
-            print("==============TERMINAL INFO=====================")
-            print("EverTerm Version 1.1.233 Phase 1\n")
-            print("Build Date: 24/11/2022 20:13\n")
+    def do_exit(self, args):
+        """Exit application"""
+        print("logout")
+        return True  # Returning True will exit the cmd loop
 
-    
-    
+    def do_startapp(self, args):
+        """Starts an app"""
+        app = args
+        subprocess.Popen(app)  # The aftermath of the app start might be a bit buggy
 
+    def do_credits(self, args):
+        """Credits to all the GitHub repos and apps used"""
+        print("Icon designed in Pixelorama, go to https://github.com/Orama-Interactive/Pixelorama/ for info")
+        print("Inspired by https://github.com/Cyber-Coding-Scripts/Terminal")
+        print("This product is a product of EverestWorks, please do not use for malicious intent.")
+        print("=====================TERMINAL INFO=====================")
+        print("EverTerm Build 23948 LabTest02 Interval 5\n")
+        print("Build Date: 21/7/2023 12:59\n")
 
-
-else:
-    print("ERROR-99-11-19a: This is stated by the compiler as module, this is main file.\n Report this error to the github page at https://github.com/EverestWorks/EverTerm!")
+if __name__ == '__main__':
+    prompt = MyCmd()
+    clear_screen()
+    print("Everterm Build 23948 LabTest02 Interval 5 ")
+    print("Public Beta 1")
+    print("This build is an experimental build and possibly unstable")
+    print("If you find a bug please report to EverestWorks")
+    prompt.prompt = "$: "
+    prompt.cmdloop("Booting Up..")

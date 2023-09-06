@@ -1,0 +1,7 @@
+Major release every year
+minor release every 2 months
+
+Versioning:
+we are retaining the "Everterm v1.0.420 LabTest02 Interval 1 " style but with changes
+"Everterm v1.0.420 LabTest02 Interval 1 " will be "Everterm v1.0.420 CODENAME" with the v1.0.xxx being updated per release
+CODENAME will be something along the lines of "EverTerm v1.0.420 Redstone" meaning the codename is a random word in any english dictionary
