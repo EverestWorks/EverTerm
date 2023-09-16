@@ -21,11 +21,13 @@ logging.basicConfig(
 # Define a logger
 logger = logging.getLogger('app')
 
+
 def clear_screen():
     if platform.system() == "Windows":
         os.system('cls')
     else:
         os.system('clear')
+
 
 class MyCmd(Cmd):
     def __init__(self):
@@ -57,7 +59,6 @@ class MyCmd(Cmd):
                     logger.debug(f"{mod_name} loaded successfully. Custom commands: {commands_added}")
                 except ImportError:
                     logger.debug(f"Failed to load {mod_file}. Please check the syntax and content of the mod file.")
-
 
     def do_command(self, line):
         """Handles the processing of user commands."""
@@ -125,7 +126,8 @@ class MyCmd(Cmd):
         for mod_name in self.user_defined_commands:
             print(f"- {mod_name}")
 
-    def load_mod(self, mod_name):
+    @staticmethod
+    def load_mod(mod_name):
         """Load a specific mod."""
         try:
             importlib.import_module(f"mods.{mod_name}")
@@ -140,13 +142,15 @@ class MyCmd(Cmd):
             print(f"{mod_name} unloaded successfully.")
         else:
             print(f"{mod_name} is not loaded.")
-#
-#
-# Separating mods part from the main thing
-#
-#
 
-    def do_end(self, args):
+    #
+    #
+    # Separating mods part from the main thing
+    #
+    #
+
+    @staticmethod
+    def do_end(args):
         """asks politely for the app to die. USAGE: end [APP]"""
         if not args:
             print("Usage: end <APP>")
@@ -159,6 +163,7 @@ class MyCmd(Cmd):
 
         print(args + " has been ended")
 
+    @staticmethod
     def do_kill(self, args):
         """Murders the app in the middle of whatever it is doing. USAGE: kill [app]"""
         if not args:
@@ -172,11 +177,12 @@ class MyCmd(Cmd):
 
         print(args + " has been killed")
 
-
+    @staticmethod
     def do_clear(self):
         """Clears the screen"""
         clear_screen()
 
+    @staticmethod
     def do_ping(self, args):
         """Pings a website of your choosing. USAGE: ping [-c] <website>"""
         args = args.split()  # Split the arguments into a list
@@ -198,12 +204,13 @@ class MyCmd(Cmd):
             command = ['ping', param, str(number), host]
             subprocess.call(command)
 
-
+    @staticmethod
     def do_echo(self, args):
         """Copies a phrase you give it"""
         copy = args
         print(copy)
 
+    @staticmethod
     def do_copy(self, args):
         """Copies files and directories. Usage: copy [-d] <source> <destination>"""
         args = args.split()
@@ -254,12 +261,13 @@ class MyCmd(Cmd):
             except Exception as e:
                 print("Error copying file:", str(e))
 
-
+    @staticmethod
     def do_summon(self, args):
         """Launches a file of your choosing"""
         e = args
         os.system(e)
 
+    @staticmethod
     def do_create(self, args):
         """Creates a file"""
         if len(args) != 2:
@@ -269,11 +277,12 @@ class MyCmd(Cmd):
             with open(f, 'w') as f:
                 f.write(' ')
 
-
+    @staticmethod
     def do_date(self):
         """Prints the date"""
         print("The date in your area is:", time.strftime("%m/%d/%Y"))
 
+    @staticmethod
     def do_filelist(self, args):
         """Lists files and directories in a given path"""
         if len(args) != 2:
@@ -284,27 +293,29 @@ class MyCmd(Cmd):
             print("Files and directories in '", file_path, "':")
             print(dir_list)
 
-
+    @staticmethod
     def do_exit(self):
         """Exit application"""
         print("logout")
         return True  # Returning True will exit the cmd loop
 
+    @staticmethod
     def do_startapp(self, args):
         """Starts an app"""
         if len(args) != 2:
-            print("Usage: startapp <appname>")
+            print("Usage: startapp <app-name>")
         else:
             app = args
-            subprocess.Popen(app)  # unfortunatly, your getting the apps cmd outputs in the terminal
-    
-    def do_docs(self, args):
+            subprocess.Popen(app)  # unfortunately, your getting the apps cmd outputs in the terminal
+
+    @staticmethod
+    def do_docs(args):
         """Basically help but more detailed"""
         if len(args) != 2:
             print("Usage: docs [COMMAND]")
         else:
-            script_dir = os.path.dirname(os.path.abspath(__file__))
-            docs_dir = os.path.join(script_dir, "help.ex")
+            script = os.path.dirname(os.path.abspath(__file__))
+            docs_dir = os.path.join(script, "help.ex")
 
             logger.debug(f"docs database directory: {docs_dir}")
 
@@ -317,6 +328,7 @@ class MyCmd(Cmd):
                 # f.write(' ')
                 pass
 
+    @staticmethod
     def do_credits(self):
         """Credits to all the repos and apps used to make this product that deserve credits"""
         print("Icon designed in Pixelorama, go to https://github.com/Orama-Interactive/Pixelorama/ for info")
@@ -325,6 +337,7 @@ class MyCmd(Cmd):
         print("=====================TERMINAL INFO=====================")
         print("EverTerm v1.0.420 LabTest01 Interval 2\n")
         print("Build Date: 24/8/2023 19:42\n")
+
 
 if __name__ == '__main__':
     prompt = MyCmd()
