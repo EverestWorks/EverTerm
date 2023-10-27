@@ -2,9 +2,12 @@
 
 **ALERT**: New Release Halloween!
 
-The terminal for beginners to use, and mod!
-
 **NEW!!** We have just implemented a new CLI command processing framework, there could be some bugs, please do alert us if there are bugs
+
+
+=====================================================
+
+The terminal for beginners to use, and mod!
 
 EverTerm Statistics:
 
