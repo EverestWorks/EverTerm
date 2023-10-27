@@ -1,6 +1,6 @@
 # EverTerm
 
-**ALERT**: Linux users, your binaries are here!
+**ALERT**: New Release Halloween!
 
 The terminal for beginners to use, and mod!
 
