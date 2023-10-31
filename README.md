@@ -1,9 +1,6 @@
 # EverTerm
 
-**ALERT**: New Release Halloween!
-
-**NEW!!** We have just implemented a new CLI command processing framework, there could be some bugs, please do alert us if there are bugs
-
+**ALERT**: New Release around Halloween!
 
 =====================================================
 
@@ -16,7 +13,7 @@ EverTerm Statistics:
 
 Release Version: Version 1.0.420
 
-OS Platform: Windows 10, Linux(beta)
+OS Platform: Windows 10, Linux
 
 Python Minimum Version: Python 3
 
