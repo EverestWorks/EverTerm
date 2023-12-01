@@ -1,6 +1,6 @@
 # EverTerm
 
-**ALERT**: New Release around Thanksgiving!
+**ALERT**: New Release around Christmas!
 
 =====================================================
 
