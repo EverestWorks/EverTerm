@@ -1,7 +1,4 @@
 # EverTerm
-
-**ALERT**: New Release around Christmas!
-
 =====================================================
 
 The terminal for beginners to use, and mod!
